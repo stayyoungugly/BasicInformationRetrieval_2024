@@ -35,7 +35,7 @@ with open('index.txt', 'w', encoding='utf-8') as index_file:
     for page_number in range(1, 17):  # 16 страниц, по 12 ссылок на каждой
         gorky_links = extract_gorky_links(page_number)
         for i, link in enumerate(gorky_links, start=(page_number - 1) * 12 + 1):
-            page_url = f'https://gorky.media/reviews/{link}'
+            page_url = f'{link}'
             if download_page(page_url, temp_folder, i):
                 index_file.write(f"page_{i}: {page_url}\n")
             else:
