@@ -55,7 +55,7 @@ def process_html_file(file_path, tokens_set, lemmas_dict):
 
 
 # Директория с HTML-файлами
-html_files_dir = 'D:\\python_2024\\BasicInformationRetrieval_2024\\homeWorks\\homeWork1\\temp_gorky_pages'
+html_files_dir = '../homeWork1/temp_gorky_pages'
 
 tokens_set = set()
 lemmas_dict = {}
