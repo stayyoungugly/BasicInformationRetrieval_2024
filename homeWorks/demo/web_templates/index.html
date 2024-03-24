@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стартовая страница</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            width: 100%;
+            align-items: center;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-input {
+            width: 40%;
+            padding: 20px;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            font-family: Helvetica, serif;
+            font-size: 18px;
+            outline: none;
+            margin-right: 20px;
+        }
+
+        .search-button {
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: white;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-button span {
+            margin-right: 20px;
+            font-size: 18px;
+            font-family: Helvetica, serif;
+            color: white;
+        }
+
+        .search-button img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="search-container">
+    <h1 class="title">Введите запрос</h1>
+    <form action="/search" method="POST" class="search-form">
+        <input type="text" name="input_value" class="search-input" placeholder="Введите запрос..."
+               value="{{ input_value }}">
+        <button type="submit" class="search-button">
+            <span>Поиск</span>
+            <img src="static/images/search-icon.png" alt="Поиск">
+        </button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поисковая система</title>
+    <style>
+        body {
+            font-family: Helvetica, serif;
+            background-color: rgb(246, 246, 246);
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-container {
+            background-color: #fff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            align-items: center;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-input {
+            width: 40%;
+            padding: 20px;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            font-family: Helvetica, serif;
+            font-size: 18px;
+            outline: none;
+            margin-right: 20px;
+        }
+
+        .search-button {
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: white;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-button span {
+            margin-right: 20px;
+            font-size: 18px;
+            font-family: Helvetica, serif;
+            color: white;
+        }
+
+        .search-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            background-color: #e6ffe6; /* светло-зеленый */
+            padding: 10px 50px;
+        }
+
+        .search-results ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .search-results li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        .search-results a {
+            text-decoration: none;
+            color: #1a0dab;
+        }
+
+        .search-results a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 18px;
+            background-color: #fcdfdf; /* светло-зеленый */
+            padding: 10px 50px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="search-container">
+    <form action="/search" method="POST" class="search-form">
+        <input type="text" name="input_value" class="search-input" placeholder="Введите запрос..."
+               value="{{ input_value }}">
+        <button type="submit" class="search-button">
+            <span>Поиск</span>
+            <img src="static/images/search-icon.png" alt="Поиск">
+        </button>
+    </form>
+</div>
+
+{% if result %}
+<div class="search-results">
+    <h2>Результаты поиска для запроса: "{{ input_value }}"</h2>
+    <ul>
+        {% for value in result %}
+        <li><a href="{{ value }}">{{ loop.index }}. {{ value }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if not result %}
+<div class="error-message">
+    <h2>По вашему запросу ничего не найдено.</h2>
+</div>
+{% endif %}
+</body>
+</html>
